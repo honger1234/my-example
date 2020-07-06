@@ -1,8 +1,8 @@
-package com.honger1234.controller;
+package honger1234.controller;
 
 import com.honger1234.entities.CommonResult;
 import com.honger1234.entities.Payment;
-import com.honger1234.service.IPaymentService;
+import honger1234.service.IPaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
