@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>cloud-provider-payment8001</module>
+        <module>cloud-consumer-order80</module>
     </modules>
 <!--    <parent>-->
 <!--        <groupId>org.springframework.boot</groupId>-->
@@ -13,9 +14,9 @@
 <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
 <!--    </parent>-->
     <groupId>com.honger1234</groupId>
-    <artifactId>clound-example</artifactId>
+    <artifactId>cloud-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>clound-example</name>
+    <name>cloud-example</name>
     <description>Demo project for Spring Boot</description>
 
     <!--统一管理jar包版本-->
