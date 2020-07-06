@@ -6,7 +6,12 @@ import com.honger1234.service.IPaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @Description: 控制层
@@ -20,6 +25,9 @@ public class PaymentController {
 
     @Value("${server.port}")
     private int port;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @Autowired
     private IPaymentService paymentService;
@@ -41,5 +49,18 @@ public class PaymentController {
             return new CommonResult(444,"没有查到数据serverPort:"+port,payment);
         }
         return new CommonResult(200,"查询成功serverPort:"+port,payment);
+    }
+
+    @GetMapping(value = "/discovery")
+    public Object discovery(){
+        List<String> services = discoveryClient.getServices();
+        for (String s:services){
+            log.info("服务名称："+s);
+        }
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for (ServiceInstance serviceInstance:instances){
+            log.info(serviceInstance.getServiceId()+"\t"+serviceInstance.getHost()+"\t"+serviceInstance.getPort()+"\t"+serviceInstance.getUri());
+        }
+        return this.discoveryClient;
     }
 }
