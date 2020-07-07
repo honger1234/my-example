@@ -9,4 +9,8 @@ eureka:
     fetch-registry: false #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索实例
     #service-url: http://${eureka.instance.hostname}:${server.port}/eureka/ #设置eureka server的地址，查询服务和注册服务都需要以来这个地址
     service-url:
-      defaultZone: http://eureka7002.com:7002/eureka/ # 不搭建集群 单机 指向自己
+      defaultZone: http://eureka7002.com:7002/eureka/ # 搭建集群
+      #defaultZone：http://eureka7001.com:7001/eureka/ # 不搭建集群 单机 指向自己
+  server:
+    enable-self-preservation: false # 关闭自我保护机制 保证不可用服务及时清除
+    eviction-interval-timer-in-ms: 2000
