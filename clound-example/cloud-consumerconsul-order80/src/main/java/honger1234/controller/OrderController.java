@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class OrderController {
 
 //    public static final String url="http://localhost:8001";
-    public static final String url="http://CLOUD-PAYMENT-consul-SERVICE";
+    public static final String url="http://cloud-payment-consul-service";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -25,8 +25,8 @@ public class OrderController {
 
 
     @GetMapping("/payment/consul")
-    public CommonResult getPayment( ){
-        return restTemplate.getForObject(url+"/payment/consul",CommonResult.class);
+    public Object getPayment( ){
+        return restTemplate.getForObject(url+"/payment/consul",String.class);
     }
 
 }
