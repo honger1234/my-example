@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Description: 控制层
@@ -62,5 +63,15 @@ public class PaymentController {
             log.info(serviceInstance.getServiceId()+"\t"+serviceInstance.getHost()+"\t"+serviceInstance.getPort()+"\t"+serviceInstance.getUri());
         }
         return this.discoveryClient;
+    }
+
+    @GetMapping(value = "/feign/timeout")
+    public Object paymentFeignTimeout(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return port;
     }
 }

@@ -1,0 +1,42 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动包
+    url: jdbc:mysql://localhost:3306/cloud?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: honger1234
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.honger1234.entities  #所有entity别名所在包
+
+eureka:
+  client:
+    register-with-eureka: false #表示是否向注册中心注册自己
+    fetch-registry: true #是否从eureka server抓取已有的注册信息，默认为true，单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka/ # 不搭建集群 单机 指向自己
+  instance:
+    instance-id: cloud-order-service80
+    prefer-ip-address: true
+
+feign:
+  client:
+    config:
+      default:
+        #简历连接所用的时间，适用于网络状况正常的情况下，两端连接所需要的时间
+        ConnectTimeOut: 5000
+        #指建立连接后从服务端读取到可用资源所用的时间
+        ReadTimeOut: 10000
+  hystrix:
+    enabled: true
+
+logging:
+  level:
+    # feign日志以什么级别监控哪个接口
+    com.honger1234.service.PaymentFeignService: debug

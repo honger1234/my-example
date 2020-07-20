@@ -1,0 +1,29 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动包
+    url: jdbc:mysql://localhost:3306/cloud?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: honger1234
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.honger1234.entities  #所有entity别名所在包
+
+eureka:
+  client:
+    register-with-eureka: true #表示是否向注册中心注册自己
+    fetch-registry: true #是否从eureka server抓取已有的注册信息，默认为true，单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka/ # 不搭建集群 单机 指向自己
+  instance:
+    instance-id: payment8001
+    prefer-ip-address: true #访问路径可以显示ip地址
+    lease-renewal-interval-in-seconds: 1 # eureka客户端向服务端发送心跳的时间间隔 单位秒 默认30
+    lease-expiration-duration-in-seconds: 2 # eureka
+
