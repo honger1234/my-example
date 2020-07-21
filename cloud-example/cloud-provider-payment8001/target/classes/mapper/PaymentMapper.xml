@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.honger1234.dao.IPaymentDao">
+    <resultMap id="baseResultMap" type="com.honger1234.entities.Payment">
+        <id column="id" property="id"/>
+        <id column="serial" property="serial"/>
+    </resultMap>
+    
+    <!--添加数据-->
+    <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+        insert into payment(serial) values (#{serial})
+    </insert>
+    <!--查询-->
+    <select id="getPaymentById" parameterType="Long" resultMap="baseResultMap">
+        select
+            id,
+            serial
+        from
+            payment
+        where
+            id=#{id}
+    </select>
+</mapper>
