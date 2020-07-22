@@ -27,6 +27,7 @@
         <module>cloud-stram-rabbitmq-consumer8803</module>
         <module>ckoud-stream-rabbitmq-consumer8803</module>
         <module>cloudalibaba-provider-payment9001</module>
+        <module>cloudalibaba-provider-payment9002</module>
     </modules>
 <!--    <parent>-->
 <!--        <groupId>org.springframework.boot</groupId>-->
