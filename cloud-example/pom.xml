@@ -21,6 +21,7 @@
         <module>cloud-gateway-gateway9527</module>
         <module>cloud-config-center-3344</module>
         <module>cloud-config-client-3355</module>
+        <module>cloud-config-client-3366</module>
     </modules>
 <!--    <parent>-->
 <!--        <groupId>org.springframework.boot</groupId>-->
@@ -44,9 +45,9 @@
         <druid.verison>1.1.10</druid.verison>
         <mybatis.spring.boot.verison>1.3.2</mybatis.spring.boot.verison>
         <cloud.version>Hoxton.SR5</cloud.version>
-        <spring.boot.varsion>2.2.1.RELEASE</spring.boot.varsion>
-<!--        <spring.boot.varsion>2.1.0.RELEASE</spring.boot.varsion>-->
-<!--        <cloud.version>Greenwich.SR5</cloud.version>-->
+<!--        <spring.boot.varsion>2.2.1.RELEASE</spring.boot.varsion>-->
+<!--        <cloud.version>Hoxton.SR1</cloud.version>-->
+        <spring.boot.varsion>2.2.2.RELEASE</spring.boot.varsion>
         <cloud.alibaba.version>2.1.0.RELEASE</cloud.alibaba.version>
     </properties>
 
