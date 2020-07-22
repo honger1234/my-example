@@ -17,6 +17,6 @@ public class PaymentController {
 
     @RequestMapping(value = "/nacos/payment/get/{id}")
     public String getPayment(@PathVariable("id") Integer id){
-        return "这是nacos服务提供者，id:"+id;
+        return "这是nacos服务提供者，id:"+id+"port:"+port;
     }
 }
