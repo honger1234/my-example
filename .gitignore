@@ -1,7 +1,7 @@
 .idea
 *.iml
 target
-/boot-mapper-example/mvnw.cmd
-/boot-mapper-example/mvnw
+mvnw.cmd
+mvnw
 .mvn
-/boot-mapper-example/*.gitignore
+*.gitignore
