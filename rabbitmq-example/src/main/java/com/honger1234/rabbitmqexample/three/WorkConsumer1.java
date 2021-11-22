@@ -29,6 +29,8 @@ public class WorkConsumer1 {
         CancelCallback cancelCallback=(consumerTag)->{
             System.out.println(consumerTag+"消费者取消消费接口回调逻辑");
         };
+        //不公平分发
+        channel.basicQos(1);
         //是否自动应答
         boolean autoAck=false;
         channel.basicConsume(QUEUE_NAME,autoAck,deliverCallback,cancelCallback);

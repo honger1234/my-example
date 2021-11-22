@@ -2,6 +2,7 @@ package com.honger1234.rabbitmqexample.three;
 
 import com.honger1234.rabbitmqexample.utils.RabbitMqUtils;
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.MessageProperties;
 
 import java.util.Scanner;
 
@@ -36,7 +37,7 @@ public class Task02 {
              * 3.其他的参数信息
              * 4.发送消息的消息体
              */
-            channel.basicPublish("",QUEUE_NAME,null,next.getBytes("UTF-8"));
+            channel.basicPublish("",QUEUE_NAME,MessageProperties.PERSISTENT_TEXT_PLAIN,next.getBytes("UTF-8"));
             System.out.println("消息发送完毕");
         }
 
