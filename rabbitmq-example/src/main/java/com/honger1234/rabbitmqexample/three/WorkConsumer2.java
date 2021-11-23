@@ -17,7 +17,7 @@ public class WorkConsumer2 {
         System.out.println("c2等待消费");
         //如何消费消息的回调
         DeliverCallback deliverCallback=(consumerTag, delivery) -> {
-            SleepUtils.sleep(50);
+            SleepUtils.sleep(30);
            String message = new String(delivery.getBody());
             System.out.println("接收到的消息:" + message);
             /**
@@ -30,7 +30,8 @@ public class WorkConsumer2 {
             System.out.println(consumerTag+"消费者取消消费接口回调逻辑");
         };
         //不公平分发
-        channel.basicQos(1);
+        int frefech=5;
+        channel.basicQos(frefech);
         //是否自动应答
         boolean autoAck=false;
         channel.basicConsume(QUEUE_NAME,autoAck,deliverCallback,cancelCallback);

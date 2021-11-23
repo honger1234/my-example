@@ -10,29 +10,30 @@ import com.rabbitmq.client.DeliverCallback;
  * 工作队列的消费者，添加手动应答模式
  */
 public class WorkConsumer1 {
-    public static final String QUEUE_NAME="ack_queue";
+    public static final String QUEUE_NAME = "ack_queue";
 
     public static void main(String[] args) throws Exception {
         Channel channel = RabbitMqUtils.getChannel();
         System.out.println("c1等待消费");
         //如何消费消息的回调
-        DeliverCallback deliverCallback=(consumerTag, delivery) -> {
+        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             SleepUtils.sleep(1);
-           String message = new String(delivery.getBody());
+            String message = new String(delivery.getBody());
             System.out.println("接收到的消息:" + message);
             /**
              * 1.消息标记 tag
              * 2.是否批量应答未应答消息
              */
-            channel.basicAck(delivery.getEnvelope().getDeliveryTag(),false);
+            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
         };
-        CancelCallback cancelCallback=(consumerTag)->{
-            System.out.println(consumerTag+"消费者取消消费接口回调逻辑");
+        CancelCallback cancelCallback = (consumerTag) -> {
+            System.out.println(consumerTag + "消费者取消消费接口回调逻辑");
         };
         //不公平分发
-        channel.basicQos(1);
+        int frefech = 2;
+        channel.basicQos(frefech);
         //是否自动应答
-        boolean autoAck=false;
-        channel.basicConsume(QUEUE_NAME,autoAck,deliverCallback,cancelCallback);
+        boolean autoAck = false;
+        channel.basicConsume(QUEUE_NAME, autoAck, deliverCallback, cancelCallback);
     }
 }
