@@ -1,12 +1,13 @@
 package com.honger1234.rabbitmqexample.config;
 
-import org.mapstruct.Qualifier;
 import org.springframework.amqp.core.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Configuration
 public class TtlQueueConfig {
     public static final String X_EXCHANGE = "X";
     public static final String QUEUE_A = "QA";
@@ -44,7 +45,7 @@ public class TtlQueueConfig {
         //死信routkey
         map.put("x-dead-letter-routing-key","YD");
         //声明队列ttl
-        map.put("x-message-ttl",10000);
+        map.put("x-message-ttl",20000);
         return QueueBuilder.durable(QUEUE_B).withArguments(map).build();
     }
 
@@ -68,7 +69,8 @@ public class TtlQueueConfig {
     //将队列D和Y交换机绑定
     @Bean
     public Binding queueDBindingY(@Qualifier("queueD") Queue queueD, @Qualifier("yExchange") DirectExchange exchangeY){
-        return BindingBuilder.bind(queueD).to(exchangeY).with("YB");
+        return BindingBuilder.bind(queueD).to(exchangeY).with("YD");
     }
+
 
 }
