@@ -1,6 +1,7 @@
 package com.honger1234.rabbitmqexample.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,5 +23,15 @@ public class SendMsgController {
         log.info("发送的时间：{}，消息为:{}",new Date().toString(),message);
         rabbitTemplate.convertAndSend("X","XA",message);
         rabbitTemplate.convertAndSend("X","XB",message);
+    }
+
+    @GetMapping("/sendMsg/{message}/{ttl}")
+    public void sendMsg(@PathVariable String message,@PathVariable String ttl){
+        log.info("发送的时间：{}，消息延迟{}毫秒为:{}",new Date().toString(),ttl,message);
+        rabbitTemplate.convertAndSend("X","XC",message,(msg)->{
+            //设置过期时间
+            msg.getMessageProperties().setExpiration(ttl);
+            return msg;
+        });
     }
 }
