@@ -1,4 +1,4 @@
-package com.honger1234.threadlearning.basics;
+package com.honger1234.threadlearning.basics.state;
 
 /**
  * 线程停止
