@@ -1,5 +1,6 @@
 package com.honger1234.rabbitmqexample.controller;
 
+import com.honger1234.rabbitmqexample.config.DelayedQueueConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -31,6 +32,16 @@ public class SendMsgController {
         rabbitTemplate.convertAndSend("X","XC",message,(msg)->{
             //设置过期时间
             msg.getMessageProperties().setExpiration(ttl);
+            return msg;
+        });
+    }
+
+    @GetMapping("/sendDelayMsg/{message}/{delayTime}")
+    public void sendMsg(@PathVariable String message,@PathVariable Integer delayTime){
+        log.info("发送的时间：{}，消息延迟{}毫秒,内容为:{}",new Date().toString(),delayTime,message);
+        rabbitTemplate.convertAndSend(DelayedQueueConfig.DELAYED_EXCHANGE_NAME,DelayedQueueConfig.DELAYED_ROUTING_KEY,message,(msg)->{
+            //设置过期时间
+            msg.getMessageProperties().setDelay(delayTime);
             return msg;
         });
     }
