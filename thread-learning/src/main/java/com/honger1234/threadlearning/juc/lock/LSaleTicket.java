@@ -9,7 +9,7 @@ class LTicket {
 
 
 //    //创建可重入锁
-    private final ReentrantLock lock=new ReentrantLock(true);
+    private final ReentrantLock lock=new ReentrantLock(false);
     //卖票方法
     public void sale() {
         //上锁
