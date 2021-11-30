@@ -31,7 +31,7 @@ class BuyTicket implements Runnable {
         }
     }
 
-    private void buy() {
+    private synchronized void buy() {
         //判断是否有票
         if (ticketNums <= 0) {
             flag = false;

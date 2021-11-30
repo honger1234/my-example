@@ -11,11 +11,14 @@ public class UnsafeList {
 
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 10000; i++) {
-            new Thread(()->{
-                list.add(Thread.currentThread().getName());
+            new Thread(() -> {
+                synchronized (list) {
+                    list.add(Thread.currentThread().getName());
+                }
             }).start();
+
         }
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         System.out.println(list.size());
 
     }

@@ -46,27 +46,29 @@ class Drawing extends Thread {
 
     @Override
     public void run() {
-        //判断有没有钱
-        if (account.money - drawingMoney < 0) {
-            System.out.println(Thread.currentThread().getName() + "钱不够，取不了");
-            return;
+        synchronized (account){
+            //判断有没有钱
+            if (account.money - drawingMoney < 0) {
+                System.out.println(Thread.currentThread().getName() + "钱不够，取不了");
+                return;
+            }
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+            //卡内余额 = 余额 减去 你取的前
+            account.money = account.money - drawingMoney;
+            //你手里的钱
+            nowMoney = nowMoney + drawingMoney;
+
+            System.out.println(account.name + "余额为：" + account.money);
+            //Thread.currentThread().getName() = this.getName();
+            System.out.println(this.getName() + "手里的钱" + nowMoney);
         }
-
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        //卡内余额 = 余额 减去 你取的前
-        account.money = account.money - drawingMoney;
-        //你手里的钱
-        nowMoney = nowMoney + drawingMoney;
-
-        System.out.println(account.name + "余额为：" + account.money);
-        //Thread.currentThread().getName() = this.getName();
-        System.out.println(this.getName() + "手里的钱" + nowMoney);
 
     }
 }
