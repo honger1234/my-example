@@ -3,7 +3,6 @@ package com.honger1234.threadlearning.juc.readwrite;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -22,7 +21,7 @@ class MyCache {
         try {
             System.out.println(Thread.currentThread().getName()+" 正在写操作"+key);
             //暂停一会
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(300);
             //放数据
             map.put(key,value);
             System.out.println(Thread.currentThread().getName()+" 写完了"+key);
@@ -42,7 +41,7 @@ class MyCache {
         try {
             System.out.println(Thread.currentThread().getName()+" 正在读取操作"+key);
             //暂停一会
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(300);
             result = map.get(key);
             System.out.println(Thread.currentThread().getName()+" 取完了"+key);
         } catch (InterruptedException e) {
@@ -66,7 +65,7 @@ public class ReadWriteLockDemo {
             },String.valueOf(i)).start();
         }
 
-        TimeUnit.MICROSECONDS.sleep(300);
+        TimeUnit.MILLISECONDS.sleep(300);
 
         //创建线程取数据
         for (int i = 1; i <=5; i++) {
