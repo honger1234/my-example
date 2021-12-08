@@ -26,4 +26,18 @@ public class TestController {
     public Object fail() {
         return "失败";
     }
+
+//    @GetMapping("/login")
+//    public AjaxResult login() {
+//        AjaxResult ajax = AjaxResult.success();
+//        LoginUser loginUser = new LoginUser();
+//        AppUser appUser = new AppUser();
+//        appUser.setUserId(7L);
+//        appUser.setUserName("15603071003");
+//        appUser.setPassword("admin123");
+//        loginUser.setAppUser(appUser);
+//        String token = tokenService.createToken(loginUser, Constants.LOGIN_APP_USER_KEY);
+//        ajax.put(Constants.TOKEN, token);
+//        return ajax;
+//    }
 }
