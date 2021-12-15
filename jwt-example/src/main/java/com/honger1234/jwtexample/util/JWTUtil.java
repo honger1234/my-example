@@ -31,12 +31,13 @@ public abstract class JWTUtil {
      * @param uid
      * @return
      */
-    public static String generate(Integer uid) {
+    public static String generate(String uid) {
         Date nowDate = new Date();
         //过期时间
-        Date expireDate = new Date(nowDate.getTime() + EXPIRE * 1000);
+        Date expireDate = new Date(nowDate.getTime() + EXPIRE * 30);
         Map<String, Object> claims = new HashMap<>(1);
-        claims.put(UID, uid);
+        claims.put("login_type","login_type_manager");
+        claims.put("login_user_key", uid);
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(nowDate)
@@ -59,7 +60,7 @@ public abstract class JWTUtil {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
-            log.error("token解析错误", e);
+//            log.error("token解析错误", e);
             throw new IllegalArgumentException("Token invalided.");
         }
         return claims;
@@ -104,6 +105,12 @@ public abstract class JWTUtil {
         } catch (ExpiredJwtException expiredJwtException) {
             return true;
         }
+    }
+
+    public static void main(String[] args) {
+        String generate = generate("067fcc64-e028-4b84-9bf6-e3f2f2ac9d4d");
+        System.out.println(generate);
+
     }
 
 }
