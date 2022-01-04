@@ -24,7 +24,7 @@ public class TestController {
 
     @RequestMapping("fail")
     public Object fail() {
-        return "失败";
+        return "master失败";
     }
 
 //    @GetMapping("/login")
