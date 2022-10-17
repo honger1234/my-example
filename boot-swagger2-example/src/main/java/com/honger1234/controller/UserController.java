@@ -1,6 +1,9 @@
 package com.honger1234.controller;
 
+import com.honger1234.annotation.ApiIgp;
+import com.honger1234.annotation.ApiNeed;
 import com.honger1234.entity.PagerIDto;
+import com.honger1234.entity.UseInfo;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -46,6 +49,18 @@ public class UserController {
 	@DeleteMapping("/{id}")
 	public String removeUser(@PathVariable Long id){
 		System.out.println(id);
+		return "success";
+	}
+
+	@ApiOperation(value = "排除属性注解")
+	@GetMapping("/swaggerTest1")
+	public String swaggerTest1(@ApiIgp ({"password"})@RequestBody UseInfo useInfo){
+		return "success";
+	}
+
+	@ApiOperation(value = "只需要属性注解")
+	@GetMapping("/swaggerTest2")
+	public String swaggerTest2(@ApiNeed({"username","age"}) UseInfo useInfo){
 		return "success";
 	}
 
