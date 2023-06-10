@@ -5,3 +5,14 @@ spring:
     url: jdbc:mysql:///flowable?serverTimezone=Asia/Shanghai&useSSL=false&nullCatalogMeansCurrent=true&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: honger1234
+
+# 开启Flowable的SQL日志输出
+logging:
+  level:
+    org.flowable: DEBUG
+    # 将SQL日志输出到控制台
+    rg.flowable.engine.impl.persistence.entity: DEBUG
+    org.flowable.engine.common.impl.db: DEBUG
+    org.apache.ibatis: DEBUG
+
+
