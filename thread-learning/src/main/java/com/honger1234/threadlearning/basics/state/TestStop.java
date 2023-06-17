@@ -4,7 +4,8 @@ package com.honger1234.threadlearning.basics.state;
  * 线程停止
  * 1.建议线程正常停止----》利用次数。不建议死循环
  * 2.建议使用标志位----》设置一个标志位
- * 3.不用使用stop或destory 等过时或者JDK 不建议使用的方法
+ * 3.使用线程interrupt()方法停止线程
+ * 4.不用使用stop或destory 等过时或者JDK 不建议使用的方法
  */
 public class TestStop implements Runnable {
 
@@ -36,6 +37,7 @@ public class TestStop implements Runnable {
                 //调用stop方法切换标志位，让线程停止
                 testStop.stop();
                 System.out.println("该线程停止了");
+                break;
             }
         }
 
