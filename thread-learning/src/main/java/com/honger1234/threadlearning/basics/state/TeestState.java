@@ -13,8 +13,8 @@ public class TeestState {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                System.out.println("/");
             }
+            System.out.println("/");
         });
 
         //观察状态
