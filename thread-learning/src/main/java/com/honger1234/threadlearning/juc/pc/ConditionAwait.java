@@ -6,6 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 实现精准通知唤醒
+ * 哪个Condition绑定哪个方法主要看condition.await()在那个方法里面，比如condition1在a方法里面，那这个condition1就是绑定了a方法
  */
 public class ConditionAwait {
 
