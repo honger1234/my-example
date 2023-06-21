@@ -1,7 +1,9 @@
 # 文档地址
-
+## 多线程基础
 [https://blog.csdn.net/qq_42025798/article/details/119358440](https://blog.csdn.net/qq_42025798/article/details/119358440)
 [https://www.kuangstudy.com/bbs/1637296056738148354#header4](https://www.kuangstudy.com/bbs/1637296056738148354#header4)
+## 多线程的JUC
+[https://www.kuangstudy.com/bbs/1640650143068217345#header4](https://www.kuangstudy.com/bbs/1640650143068217345#header4)
 
 # 自己的一些思考
 
