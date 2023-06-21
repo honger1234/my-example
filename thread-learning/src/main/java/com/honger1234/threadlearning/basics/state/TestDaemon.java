@@ -3,8 +3,7 @@ package com.honger1234.threadlearning.basics.state;
 /**
  * 1.线程分为用户线程和守护线程
  * 2.虚拟机必须确保用户线程执行完毕
- * 3.虚拟机不用等待守护线程执行完毕
- * 如：后台记录操作日志、监控内存、垃圾回收等等…
+ * 3.虚拟机不用等待守护线程执行完毕,如：后台记录操作日志、监控内存、垃圾回收等等…
  */
 public class TestDaemon {
     public static void main(String[] args) {

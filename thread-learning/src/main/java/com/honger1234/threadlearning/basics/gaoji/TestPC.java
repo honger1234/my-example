@@ -36,14 +36,19 @@ class Productor extends Thread {
     }
 }
 
-//消费者
+
+/**
+ * 消费者
+ */
 class Consumer extends Thread {
     SynContainer container;
 
     public Consumer(SynContainer container) {
         this.container = container;
     }
-    //生产
+    /**
+     * 生产
+     */
     @Override
     public void run() {
         for (int i = 1; i <= 20; i++) {

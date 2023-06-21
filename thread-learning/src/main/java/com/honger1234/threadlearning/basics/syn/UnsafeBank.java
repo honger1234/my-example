@@ -29,13 +29,23 @@ class Account {
     }
 }
 
-//银行：模拟取款
-class Drawing extends Thread {
 
-    Account account;//账户
-    //取了多少钱
+/**
+ * 银行：模拟取款
+ */
+class Drawing extends Thread {
+    /**
+     * 账户
+     */
+    Account account;
+    //
+    /**
+     * 取了多少钱
+     */
     int drawingMoney;
-    //现在手里有多少钱
+    /**
+     * 现在手里有多少钱
+     */
     int nowMoney;
 
     public Drawing(Account account, int drawingMoney, String name) {
