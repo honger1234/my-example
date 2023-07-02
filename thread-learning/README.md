@@ -1,9 +1,13 @@
-# 文档地址
+# 参考地址
+
 ## 多线程基础
+文档：
 [https://blog.csdn.net/qq_42025798/article/details/119358440](https://blog.csdn.net/qq_42025798/article/details/119358440)
 [https://www.kuangstudy.com/bbs/1637296056738148354#header4](https://www.kuangstudy.com/bbs/1637296056738148354#header4)
+视频地址:[https://www.bilibili.com/video/BV1V4411p7EF/?spm_id_from=333.999.0.0&vd_source=a3d625a64090fc4e2e34f1ae12c724f1](https://www.bilibili.com/video/BV1V4411p7EF/?spm_id_from=333.999.0.0&vd_source=a3d625a64090fc4e2e34f1ae12c724f1)
 ## 多线程的JUC
-[https://www.kuangstudy.com/bbs/1640650143068217345#header4](https://www.kuangstudy.com/bbs/1640650143068217345#header4)
+文档：[https://www.kuangstudy.com/bbs/1640650143068217345#header4](https://www.kuangstudy.com/bbs/1640650143068217345#header4)
+视频地址:[https://www.bilibili.com/video/BV1B7411L7tE?p=28&vd_source=a3d625a64090fc4e2e34f1ae12c724f1](https://www.bilibili.com/video/BV1B7411L7tE?p=28&vd_source=a3d625a64090fc4e2e34f1ae12c724f1)
 
 # 自己的一些思考
 
