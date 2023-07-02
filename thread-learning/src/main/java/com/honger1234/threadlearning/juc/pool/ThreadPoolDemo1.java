@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 //演示线程池三种常用分类
 
 /**
- * 线程池的三大方法，七大参数和
+ * 线程池的三大方法，七大参数和4种拒接策略
  */
 public class ThreadPoolDemo1 {
     public static void main(String[] args) {
